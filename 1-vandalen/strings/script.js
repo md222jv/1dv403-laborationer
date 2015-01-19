@@ -6,9 +6,30 @@ window.onload = function(){
 	var convertString = function(str){
 		// Plats för förändring.		
 		// Returnera den konverterade strängen.
-		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
+		// Vid fel, kasta ett undantag med ett meddelande till användaren.
+		
+		if (str.length > 0)
+			{
+				var convCha = "";
+				var i;
+				
+				for ( i = 0; i < str.length; i +=1 )
+				{
+					if (str.charCode(i) > 64 && str.charCode(i) > 91 || str.charCode(i) == 196 || str.charCode(i) == 197 || str.charCode(i) == 214)
+					{
+						convCha += str.charAt(i).toLowerCase().replace(/A/g, "#");
+					}
+					else
+					{
+						convCha += str.charAt(i).toUpperCase().replace(/a/g, "#")	
+					}
+					console.Log(i);
+				}
+				return convCha;
+			}
 	
-
+		return "Du måste ange en mening.";
+			
 
 
 
