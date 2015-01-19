@@ -15,26 +15,20 @@ window.onload = function(){
 				
 				for ( i = 0; i < str.length; i +=1 )
 				{
-					if (str.charCode(i) > 64 && str.charCode(i) > 91 || str.charCode(i) == 196 || str.charCode(i) == 197 || str.charCode(i) == 214)
+					if (str.charCodeAt(i) > 64 && str.charCodeAt(i) < 91 || str.charCodeAt(i) > 195 && str.charCodeAt(i) < 215)
 					{
-						convCha += str.charAt(i).toLowerCase().replace(/A/g, "#");
+						convCha += str.charAt(i).toLowerCase().replace(/a/g, "#");
 					}
 					else
 					{
-						convCha += str.charAt(i).toUpperCase().replace(/a/g, "#")	
+						convCha += str.charAt(i).toUpperCase().replace(/A/g, "#");	
 					}
-					console.Log(i);
+					console.log(i);
 				}
 				return convCha;
 			}
 	
 		return "Du måste ange en mening.";
-			
-
-
-
-
-
 	};
 	// ------------------------------------------------------------------------------
 
@@ -51,7 +45,7 @@ window.onload = function(){
 		p.classList.remove( "error");
 
 		try {
-			var answer = convertString(input.value) // Läser in texten från textrutan och skickar till funktionen "convertString"
+			var answer = convertString(input.value); // Läser in texten från textrutan och skickar till funktionen "convertString"
 			p.innerHTML = answer;		// Skriver ut texten från arrayen som skapats i funktionen.	
 		} catch (error){
 			p.classList.add( "error"); // Växla CSS-klass, IE10+
